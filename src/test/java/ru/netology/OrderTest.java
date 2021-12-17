@@ -35,7 +35,7 @@ public class OrderTest {
         ElementsCollection inputs = $$ (".input__control");
         inputs.find(Condition.attribute("type","text")).setValue("Ivanov Petr");
         $(".button").click();
-        $(".input__sub").shouldHave(exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
+        $(".input_invalid .input__sub").shouldHave(exactText("Имя и Фамилия указаны неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
     @Test
         //Negative test
@@ -46,7 +46,7 @@ public class OrderTest {
         inputs.find(Condition.attribute("type","tel")).setValue("+790926809090");
         $(".checkbox__box").click();
         $(".button").click();
-        $("[data-test-id='phone'] .input__sub").shouldHave(exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
+        $(".input_invalid .input__sub").shouldHave(exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
     }
 
     @Test
@@ -58,7 +58,7 @@ public class OrderTest {
         inputs.find(Condition.attribute("type","tel")).setValue("89092680909");
         $(".checkbox__box").click();
         $(".button").click();
-        $("[data-test-id='phone'] .input__sub").shouldHave(exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
+        $(".input_invalid .input__sub").shouldHave(exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
     }
     @Test
         //Negative test
